@@ -1,7 +1,10 @@
-package Ex1;
+package Ex2;
 
-import java.net.*;
-import java.io.*;
+import Ex1.servidorthread;
+
+import java.io.IOException;
+import java.net.ServerSocket;
+import java.net.Socket;
 
 public class servidor {
     public static void main(String[] args) {
@@ -20,8 +23,8 @@ public class servidor {
             try {
 
                 s1 = s.accept();
-                servidorthread st;
-                st=new servidorthread(s1);
+                servidorthreadobject st;
+                st = new servidorthreadobject(s1);
                 st.start();
 
             } catch( IOException e ) {
