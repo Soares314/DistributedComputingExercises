@@ -35,7 +35,7 @@ public class servidorthreadestoque extends Thread{
 
                     if( stockAfterOperation >= 0 ){
                         StockProducts.put(product, stockAfterOperation);
-                        s1out.writeUTF("Estoque atualizado com quantidade" + stockAfterOperation);
+                        s1out.writeUTF("Estoque do produto atualizado com quantidade " + stockAfterOperation);
                     }
                     else
                         s1out.writeUTF("Não é possível fazer a saída de estoque – quantidade menor que o valor desejado");
