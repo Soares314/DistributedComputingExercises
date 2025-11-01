@@ -35,7 +35,7 @@ public class servidorthreadobject extends Thread{
             s1.close();
         }
         catch(Exception e){
-            System.out.println("Erro="+e.getMessage());
+            System.out.println("Error="+e.getMessage());
         }
 
     }

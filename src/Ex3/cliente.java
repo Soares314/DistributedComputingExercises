@@ -1,6 +1,8 @@
-package Ex2;
+package Ex3;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.util.Scanner;
@@ -29,32 +31,28 @@ public class cliente {
             sIn = new ObjectInputStream(socket.getInputStream());
             while (true) {
 
-                System.out.println("\nDigite cada lado do quadrilátero");
-                int lado1 = scanner.nextInt();
-                int lado2 = scanner.nextInt();
-                int lado3 = scanner.nextInt();
-                int lado4 = scanner.nextInt();
+                System.out.println("\nQual produto você busca?");
+                String product = scanner.nextLine();
 
-                if (lado1 == 0 || lado2 == 0 || lado3 == 0 || lado4 == 0) {
+                if(product.equals("terminar")){
                     break;
                 }
 
-                Quadrilatero quadrilat = new Quadrilatero(lado1, lado2, lado3, lado4);
+                System.out.printf("\nAdicione(+) ou retire(-) produto %s do estoque", product);
+                int operationProduct = scanner.nextInt();
 
-                s1out.writeObject(quadrilat);
+                s1out.writeUTF(product);
+                s1out.writeInt(operationProduct);
                 s1out.flush();
 
-                quadrilat = (Quadrilatero) sIn.readObject();
-
-                quadrilat.mostradados();
+                String resultOperation = sIn.readUTF();
+                System.out.println(resultOperation);
 
             }
 
             socket.close();
         } catch (IOException e) {
             System.out.println("Erro = " + e.getMessage());
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
         }
     }
 }

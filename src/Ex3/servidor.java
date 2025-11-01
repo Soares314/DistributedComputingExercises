@@ -1,4 +1,4 @@
-package Ex2;
+package Ex3;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -12,7 +12,7 @@ public class servidor {
         try {
             s = new ServerSocket( 4321,300 );
         } catch( IOException e ) {
-            System.out.println( e );
+            System.out.println("Error="+e.getMessage());
         }
 
         System.out.println("\nServidor Iniciado!!!");
@@ -22,8 +22,8 @@ public class servidor {
 
                 assert s != null;
                 s1 = s.accept();
-                servidorthreadobject st;
-                st = new servidorthreadobject(s1);
+                servidorthreadestoque st;
+                st = new servidorthreadestoque(s1);
                 st.start();
 
             } catch( IOException e ) {

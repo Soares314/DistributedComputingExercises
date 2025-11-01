@@ -19,13 +19,14 @@ public class servidor {
         while( true ) {
             try {
 
+                assert s != null;
                 s1 = s.accept();
                 servidorthread st;
                 st=new servidorthread(s1);
                 st.start();
 
             } catch( IOException e ) {
-                System.out.println( e );
+                System.out.println("Error="+e.getMessage());
             }
         }
     }

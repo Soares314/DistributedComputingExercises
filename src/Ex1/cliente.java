@@ -5,7 +5,7 @@ import java.io.*;
 import java.util.*;
 
 public class cliente {
-    public static void main( String args[] ) throws IOException {
+    public static void main(String[] args) throws IOException {
         String msg;
         Socket socket;
         DataInputStream sIn;
@@ -53,7 +53,7 @@ public class cliente {
 
             socket.close();
         } catch (IOException e) {
-            System.out.println(e);
+            System.out.println("Error="+e.getMessage());
         }
     }
 }
